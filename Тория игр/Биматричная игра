@@ -1,4 +1,4 @@
- Функция для ввода данных пользователем с клавиатуры
+# Функция для ввода данных пользователем с клавиатуры
 def reading_entering(n):
     matrix = []
     for i in range(n):
@@ -59,28 +59,11 @@ print('Стратегии игрока В - ',strategy_b)
 
 import numpy as np
 matrix_b_90 = np.rot90(matrix_b, 1)
-'''
-nash = 0
-a = []
-a_ind = []
-b = []
-for i in range(n):
-    a.append(max(matrix_a_90[i].index()))
-    ind_a = a[i]
-    ind__a = matrix_a_90[i].index(str(ind_a))
-    a_ind.append(ind__a)
-    for j in range(n):
-        b.append(max(matrix_b[j]))
 
-for i in range(n):
-    print(array.matrix_a_90[i].index(max(matrix_a_90[i])))
-#print(a_ind)
-
-'''
 import nashpy as nash
 
-P1=np.array(matrix_b_90)
-P2=np.array(matrix_b)
+P1=np.array(matrix_a)
+P2=np.array(matrix_b_90)
 prisoner_dilemma=nash.Game(P1,P2)
 k = prisoner_dilemma.support_enumeration()
 for i in k:
