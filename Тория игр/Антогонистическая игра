@@ -15,7 +15,7 @@ def reading_random(border, nrows):
     matrix = np.random.randint(border, size=(nrows, nrows))
     return matrix
 
-print('Выберите способ задания весовой матрицы')
+print('Выберите способ задания платежной матрицы')
 print('1. Ввод с клавиатуры')
 print('2. Рандомная матрица')
 type = int(input('Введите способ задания матрицы, выбрав соответствующий номер '))
@@ -72,8 +72,14 @@ ind_b = b.index(min(b))
 print('Для игрока В оптимальной чистой стратегией будет',strategy_b[ind_b])
 print('Если игрок В выберет чистую стратегию, то его процент выигрыша не будет ниже', 100 - min(b)) #верхняя цена игры
 
-from scipy.optimize import linprog
-c = [0.017094017,0,0.001709402]
-A_ub = matrix
-b_ub = [1,1.44,1]
-print(linprog(c, A_ub, b_ub))
+import numpy as np
+import nashpy as nash
+
+P1=np.array(matrix)
+P2=np.array(trans_matrix)
+prisoner_dilemma=nash.Game(P1,P2)
+k = prisoner_dilemma.support_enumeration()
+for i in k:
+    print(i)
+
+print(prisoner_dilemma)
